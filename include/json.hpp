@@ -79,7 +79,7 @@ public:
         while (position < n) {
             while (position < n) {
                 if ((s[position] == ' ') ||
-                    (s[position] == '/n') || (s[position] == '\t')) {
+                    (s[position] == '\n') || (s[position] == '\t')) {
                     position++;
                 } else {
                     break;
@@ -177,7 +177,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '\n'
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -202,7 +202,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '\n'
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -237,7 +237,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '\n'
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -265,7 +265,7 @@ public:
         std::string state = "find_value";
         while (position < n) {
             while (position < n) {
-                if ((s[position] == ' ') || (s[position] == '/n')
+                if ((s[position] == ' ') || (s[position] == '\n')
                     || (s[position] == '\t')) {
                     position++;
                 } else {
@@ -325,7 +325,7 @@ public:
         int n = s.length();
         int position = 0;
         while (position < n) {
-            if (s[position] == ' ' || s[position] == '/n'
+            if (s[position] == ' ' || s[position] == '\n'
                 || s[position] == '\t') {
                 position++;
                 continue;

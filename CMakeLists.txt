@@ -20,7 +20,6 @@ huntergate(
 
 # TODO: rename project and delete this comment
 project(lab)
-string(APPEND CMAKE_CXX_FLAGS " -Wno-multichar")
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
