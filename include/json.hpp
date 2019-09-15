@@ -14,8 +14,6 @@
 #include <fstream>
 #include <cstdlib>
 
-using namespace std;
-
 class Json {
 private:
     std::any _data;
@@ -25,9 +23,16 @@ public:
         _data = parse(s);
     }
 
+
     Json(std::any s) {
-        _data = std::any_cast<std::map<std::string, std::any>>(s);
+        try {
+            _data = std::any_cast<std::map<std::string, std::any>>(s);
+        }
+        catch (...) {
+            throw std::logic_error("is not an object");
+        }
     }
+
 
     bool is_array() const {
         if (_data.type() == typeid(std::vector<std::any>)) {
@@ -63,6 +68,7 @@ public:
             throw std::logic_error("is not an array");
         }
     }
+
 
     std::map<std::string, std::any> parse_object(const std::string& s, int& position) {
         int n = s.length();
@@ -186,6 +192,7 @@ public:
         return ::atof(str.c_str());
     }
 
+
     float parse_bool(const std::string& s, int& position) {
         int n = s.length();
         std::string str = "";
@@ -214,6 +221,7 @@ public:
         return ::atof(str.c_str());
     }
 
+
     std::string parse_string(const std::string& s, int& position) {
         int n = s.length();
         std::string str = "";
@@ -237,6 +245,7 @@ public:
         }
         return str;
     }
+
 
     std::vector<std::any> parse_array(const std::string& s, int& position) {
         int n = s.length();
@@ -326,13 +335,11 @@ public:
     Json parseFile(char* path_to_file) {
         FILE *f;
         f = fopen(path_to_file, "r");
-        ifstream fin(path_to_file);
+        std::ifstream fin(path_to_file);
         std::string s = "";
         fin >> s;
         fclose(f);
         return parse(s);
     }
 };
-
-
 #endif // INCLUDE_JSON_HPP_
