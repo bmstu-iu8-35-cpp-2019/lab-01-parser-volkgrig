@@ -11,7 +11,7 @@ TEST(Json, Operato_EQ) {
     std::string j5 = "[1,2,5]}";
     std::string jjson = j1 + j2 + j3 + j4 + j5;
 
-    Json object = object.parse(jjson);
+    Json object = Json(jjson);
     EXPECT_EQ(object.is_object(), true);
     EXPECT_EQ(static_cast<std::string>("Ivanov"),
         std::any_cast<std::string>(object["lastname"]));
