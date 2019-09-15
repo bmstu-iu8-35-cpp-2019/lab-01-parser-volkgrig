@@ -20,7 +20,7 @@ private:
 
 public:
     explicit Json(const std::string& s) {
-        _data = parse(s);
+        parse(s);
     }
 
 
