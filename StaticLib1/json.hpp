@@ -9,7 +9,7 @@
 #include <vector>
 #include <stdexcept>
 #include "iostream"
-#include<stdio.h>
+#include<stdio.h> 
 #include<stdlib.h>
 #include <fstream>
 #include <cstdlib>
@@ -70,15 +70,14 @@ public:
     }
 
 
-    std::map<std::string, std::any> parse_object(
-        const std::string& s, int& position) {
+    std::map<std::string, std::any> parse_object(const std::string& s, int& position) {
         int n = s.length();
         std::map<std::string, std::any> object;
         std::string state = "find_key_or_end";
         std::string key = "";
         while (position < n) {
             while (position < n) {
-                if ((s[position] == ' ') ||
+                if ((s[position] == ' ') || 
                     (s[position] == '/n') || (s[position] == '\t')) {
                     position++;
                 } else {
@@ -99,7 +98,8 @@ public:
                     position++;
                     key = parse_string(s, position);
                     state = "find_colon";
-                } else {
+                }
+                else {
                     if (state == "find_value") {
                         position++;
                         std::string value = parse_string(s, position);
@@ -138,7 +138,7 @@ public:
                 }
             }
             if (s[position] == '}') {
-                if ((state == "find_key_or_end")
+                if ((state == "find_key_or_end") 
                     || (state == "find_comma_or_end")) {
                     position++;
                     return object;
@@ -149,7 +149,7 @@ public:
             if (s[position] == '{') {
                 if (state == "find_value") {
                     position++;
-                    std::map<std::string, std::any> value =
+                    std::map<std::string, std::any> value = 
                         parse_object(s, position);
                     object.insert(make_pair(key, value));
                     state = "find_comma_or_end";
@@ -177,7 +177,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '/n' 
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -202,7 +202,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '/n' 
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -237,7 +237,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '/n' 
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -265,7 +265,7 @@ public:
         std::string state = "find_value";
         while (position < n) {
             while (position < n) {
-                if ((s[position] == ' ') || (s[position] == '/n')
+                if ((s[position] == ' ') || (s[position] == '/n') 
                     || (s[position] == '\t')) {
                     position++;
                 } else {
@@ -325,7 +325,7 @@ public:
         int n = s.length();
         int position = 0;
         while (position < n) {
-            if (s[position] == ' ' || s[position] == '/n'
+            if (s[position] == ' ' || s[position] == '/n' 
                 || s[position] == '\t') {
                 position++;
                 continue;
@@ -345,6 +345,7 @@ public:
         return *this;
     }
 
+    
     Json parseFile(char* path_to_file) {
         FILE *f;
         f = fopen(path_to_file, "r");
