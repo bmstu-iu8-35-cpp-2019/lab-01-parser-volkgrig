@@ -79,7 +79,7 @@ public:
         while (position < n) {
             while (position < n) {
                 if ((s[position] == ' ') ||
-                    (s[position] == "/n") || (s[position] == "\t")) {
+                    (s[position] == '/n') || (s[position] == '\t')) {
                     position++;
                 } else {
                     break;
