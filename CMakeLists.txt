@@ -30,10 +30,6 @@ add_library(lab STATIC
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
 
-add_library(json STATIC
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/json.hpp
-)
-
 add_executable(tests
   # TODO: enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
@@ -49,7 +45,6 @@ target_include_directories(tests
 )
 # TODO: change lab word to project name and delete this comment
 target_link_libraries(tests GTest::main lab)
-target_link_libraries(executable json)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests) 
