@@ -20,7 +20,26 @@ private:
 
 public:
     explicit Json(const std::string& s) {
-        parse(s);
+        int n = s.length();
+        int position = 0;
+        while (position < n) {
+            if (s[position] == ' ' || s[position] == '\n'
+                || s[position] == '\t') {
+                position++;
+                continue;
+            }
+            if (s[position] == '{') {
+                position++;
+                _data = parse_object(s, position);
+                break;
+            }
+            if (s[position] == '[') {
+                position++;
+                _data = parse_array(s, position);
+                auto pam = std::any_cast<std::vector<std::any>>(_data);
+                break;
+            }
+        }
     }
 
 
