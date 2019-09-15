@@ -4,8 +4,8 @@
 #include "../include/json.hpp"
 
 TEST(Json, Operato_EQ) {
-std::string jjson = "{ \"lastname\" : \"Ivanov\", \"firstname\" : \"Ivan\", \"age\"" +
-    ": 25, \"islegal\" : false, \"address\" : { \"city\" : \"Moscow\", \"street\" : \"Vozdvijenka\"}, \"ad\""+
+std::string jjson = "{ \"lastname\" : \"Ivanov\", \"firstname\" : \"Ivan\", \"age\""
+    ": 25, \"islegal\" : false, \"address\" : { \"city\" : \"Moscow\", \"street\" : \"Vozdvijenka\"}, \"ad\""
     ": [1,2,5]}";
 
 Json object = object.parse(jjson);

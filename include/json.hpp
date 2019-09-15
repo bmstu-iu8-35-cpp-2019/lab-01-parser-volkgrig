@@ -222,7 +222,7 @@ public:
                 return false; }
             if (str.length() == 4 && str == "true") {
                 return true; }
-            if (str.length() == 4 && str != "fals" ) {
+            if ((str.length() == 4) && (str != "fals")) {
                 throw std::invalid_argument("11.11.11"); }
             if (str.length() == 5 && str != "false") {
                 throw std::invalid_argument("10.10.10"); }
