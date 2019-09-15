@@ -35,7 +35,10 @@ add_executable(tests
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
 )
 
-
+add_executable(main
+  # TODO: enum your files and delete this comment
+  ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
+)
 # TODO: change lab word to project name and delete this comment
 target_include_directories(lab 
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include

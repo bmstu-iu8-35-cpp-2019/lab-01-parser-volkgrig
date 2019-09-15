@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "../include/json.hpp"
-
+/*
 TEST(Json, Operato_EQ) {
     std::string j1 = "{ \"lastname\" : \"Ivanov\", \"firstname\" : \"Ivan\", ";
     std::string j2 = "\"age\" : 25, \"islegal\" : false,";
@@ -29,3 +29,4 @@ TEST(Json, Operato_EQ) {
     EXPECT_EQ(static_cast<float>(5),
         std::any_cast<float>((std::any_cast<std::vector<std::any>>(a))[2]));
 }
+*/
