@@ -1,3 +1,3 @@
 // Copyright 2019 Volkov
 
-#include "../include/myjson.hpp"
+#include "../include/json.hpp"
