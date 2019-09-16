@@ -22,8 +22,9 @@ int main() {
     std::string j1 = "[[\"Si-9.15\", \"RTS-9.15\", \"GAZP-9.15\"], ";
     std::string j2 = "[100024, 100027, 100050],";
     std::string j3 = "[\"Futures contract for USD / RUB\", \"Futures contract";
-    std::string j4 = " for index RTS\", \"Futures contract for Gazprom shares\"]]";
-    std::string jjson = j1 + j2 + j3 + j4;
+    std::string j4 = " for index RTS\", \"Futures contract";
+    std::string j5 = " for Gazprom shares\"]]";
+    std::string jjson = j1 + j2 + j3 + j4 + j5;
     json j = json::parse(jjson);
     size_t n = (j[0]).size();
     json j_new;

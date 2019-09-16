@@ -1,7 +1,7 @@
 // Copyright 2019 Volkov
 
-#ifndef INCLUDE_JSON_HPP_
-#define INCLUDE_JSON_HPP_
+#ifndef INCLUDE_MYJSON_HPP_
+#define INCLUDE_MYJSON_HPP_
 
 #include <string>
 #include <any>
@@ -374,4 +374,4 @@ public:
         return parse(s);
     }
 };
-#endif // INCLUDE_JSON_HPP_
+#endif // INCLUDE_MYJSON_HPP_
