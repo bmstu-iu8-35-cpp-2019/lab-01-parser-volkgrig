@@ -35,7 +35,6 @@
 *.vcxproj
 *vcxproj.filters
 *vcxproj.user
-main.cpp
 .vs/
 Debug/
 enc_temp_folder/
@@ -47,3 +46,5 @@ CMakeFiles/
 CMakeCache.txt
 *.dir*
 
+include/nlohmann/
+include/json.hpp
