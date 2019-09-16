@@ -47,5 +47,3 @@ CMakeFiles/
 CMakeCache.txt
 *.dir*
 
-include/nlohmann/
-include/json.hpp
