@@ -20,7 +20,26 @@ private:
 
 public:
     explicit Json(const std::string& s) {
-        _data = parse(s);
+        int n = s.length();
+        int position = 0;
+        while (position < n) {
+            if (s[position] == ' ' || s[position] == '\n'
+                || s[position] == '\t') {
+                position++;
+                continue;
+            }
+            if (s[position] == '{') {
+                position++;
+                _data = parse_object(s, position);
+                break;
+            }
+            if (s[position] == '[') {
+                position++;
+                _data = parse_array(s, position);
+                auto pam = std::any_cast<std::vector<std::any>>(_data);
+                break;
+            }
+        }
     }
 
 
@@ -79,7 +98,7 @@ public:
         while (position < n) {
             while (position < n) {
                 if ((s[position] == ' ') ||
-                    (s[position] == '/n') || (s[position] == '\t')) {
+                    (s[position] == '\n') || (s[position] == '\t')) {
                     position++;
                 } else {
                     break;
@@ -177,7 +196,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '\n'
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -202,7 +221,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '\n'
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -237,7 +256,7 @@ public:
         std::string str = "";
         while (position < n) {
             while (position < n) {
-                if (s[position] == ' ' || s[position] == '/n'
+                if (s[position] == ' ' || s[position] == '\n'
                     || s[position] == '\t') {
                     position++;
                 } else {
@@ -265,7 +284,7 @@ public:
         std::string state = "find_value";
         while (position < n) {
             while (position < n) {
-                if ((s[position] == ' ') || (s[position] == '/n')
+                if ((s[position] == ' ') || (s[position] == '\n')
                     || (s[position] == '\t')) {
                     position++;
                 } else {
@@ -325,7 +344,7 @@ public:
         int n = s.length();
         int position = 0;
         while (position < n) {
-            if (s[position] == ' ' || s[position] == '/n'
+            if (s[position] == ' ' || s[position] == '\n'
                 || s[position] == '\t') {
                 position++;
                 continue;

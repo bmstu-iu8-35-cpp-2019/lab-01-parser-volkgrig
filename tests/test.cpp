@@ -1,7 +1,7 @@
 // Copyright 2019 Volkov
 
 #include <gtest/gtest.h>
-#include "../include/json.hpp"
+//#include "../include/myjson.hpp"
 /*
 TEST(Json, Operato_EQ) {
     std::string j1 = "{ \"lastname\" : \"Ivanov\", \"firstname\" : \"Ivan\", ";

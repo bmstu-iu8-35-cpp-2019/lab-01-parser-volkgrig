@@ -21,6 +21,9 @@ huntergate(
 # TODO: rename project and delete this comment
 project(lab)
 
+hunter_add_package(nlohmann_json)
+find_package(nlohmann_json CONFIG REQUIRED)
+
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
@@ -30,16 +33,12 @@ add_library(lab STATIC
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
 
-#add_library(json STATIC 
-#${CMAKE_CURRENT_SOURCE_DIR}/json.hpp
-#)
-
 add_executable(tests
   # TODO: enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
 )
 
-add_executable(main
+add_executable(mains
   # TODO: enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
 )
@@ -50,10 +49,12 @@ target_include_directories(lab
 target_include_directories(tests 
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+target_include_directories(mains 
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 # TODO: change lab word to project name and delete this comment
 target_link_libraries(tests GTest::main lab)
-#target_link_libraries(executable -fsanitize=address gtest ${CMAKE_THREAD_LIBS_INIT})
-#target_link_libraries(executable json)
+target_link_libraries(mains nlohmann_json::nlohmann_json lab)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests) 
