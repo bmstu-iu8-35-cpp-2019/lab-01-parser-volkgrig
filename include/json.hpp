@@ -112,7 +112,8 @@ public:
                     state = find_key_or_end;
                     continue;
                 } else {
-                    throw std::invalid_argument(" , found; state not 'comma_or_end'");
+                    throw std::invalid_argument(
+                        " , found; state not 'comma_or_end'");
                 }
             }
             if (s[position] == '"') {
@@ -128,7 +129,8 @@ public:
                         state = find_comma_or_end;
                     } else {
                         throw std::invalid_argument(
-                            "double apostrophe found; state not key_or_end or find_value");
+                            "double apostrophe found;"\
+                            "state not key_or_end or find_value");
                     }
                 }
             }
@@ -138,7 +140,9 @@ public:
                     object.insert(make_pair(key, value));
                     state = find_comma_or_end;
                 } else {
-                    throw std::invalid_argument("number found; state not find_value");
+                    throw std::invalid_argument(
+                        "number found;"\
+                        "state not find_value");
                 }
             }
 
@@ -148,7 +152,9 @@ public:
                     object.insert(make_pair(key, value));
                     state = find_comma_or_end;
                 } else {
-                    throw std::invalid_argument("alpha found; state not find_value");
+                    throw std::invalid_argument(
+                        "alpha found;"\
+                        "state not find_value");
                 }
             }
             if (s[position] == ':') {
@@ -156,7 +162,9 @@ public:
                     position++;
                     state = find_value;
                 } else {
-                    throw std::invalid_argument(": found; state not find_colon");
+                    throw std::invalid_argument(
+                        ": found;"\
+                        "state not find_colon");
                 }
             }
             if (s[position] == '}') {
@@ -165,7 +173,9 @@ public:
                     position++;
                     return object;
                 } else {
-                    throw std::invalid_argument("} found; state not find_key_or_end");
+                    throw std::invalid_argument(
+                        "} found;"\
+                        "state not find_key_or_end");
                 }
             }
             if (s[position] == '{') {
@@ -176,7 +186,9 @@ public:
                     object.insert(make_pair(key, value));
                     state = find_comma_or_end;
                 } else {
-                    throw std::invalid_argument("} found; state not find_value");
+                    throw std::invalid_argument(
+                        "} found;"\
+                        "state not find_value");
                 }
             }
             if (s[position] == '[') {
@@ -186,11 +198,14 @@ public:
                     object.insert(make_pair(key, value));
                     state = find_comma_or_end;
                 } else {
-                    throw std::invalid_argument("[ found; state not find_value");
+                    throw std::invalid_argument(
+                        "[ found;"\
+                        "state not find_value");
                 }
             }
          }
-         throw std::invalid_argument("position number > n");;
+         throw std::invalid_argument(
+             "position number > n");;
     }
 
 
@@ -304,7 +319,9 @@ public:
                     state = find_value;
                     position++;
                 }else{
-                    throw std::invalid_argument(" , found; state not 'comma_or_end'");
+                    throw std::invalid_argument(
+                        " , found;"\
+                        "state not 'comma_or_end'");
                 }
             }
             if (isdigit(s[position])) {
@@ -313,7 +330,9 @@ public:
                     arr.push_back(value);
                     state = find_comma_or_end;
                 } else {
-                    throw std::invalid_argument("number found; state not find_value");
+                    throw std::invalid_argument(
+                        "number found;"\
+                        "state not find_value");
                 }
             }
 
@@ -323,7 +342,9 @@ public:
                     arr.push_back(value);
                     state = find_comma_or_end;
                 } else {
-                    throw std::invalid_argument("alpha found; state not find_value");
+                    throw std::invalid_argument(
+                        "alpha found;"\
+                        "state not find_value");
                 }
             }
             if (s[position] == '{') {
@@ -331,7 +352,9 @@ public:
                     position++;
                     arr.push_back(parse_object(s, position));
                 } else {
-                    throw std::invalid_argument("{ found; state not find_value");
+                    throw std::invalid_argument(
+                        "{ found;"\
+                        "state not find_value");
                 }
             }
             if (s[position] == ']') {
@@ -339,7 +362,8 @@ public:
                     return arr;
             }
         }
-        throw std::invalid_argument("position number > n");
+        throw std::invalid_argument(
+            "position number > n");
     }
 
 
