@@ -14,6 +14,8 @@
 #include <fstream>
 #include <cstdlib>
 
+enum state {find_value, find_comma_or_end};
+
 class Json {
 private:
     std::any _data;
@@ -281,7 +283,7 @@ public:
         int& position) {
         int n = s.length();
         std::vector<std::any> arr;
-        std::string state = "find_value";
+        auto state = find_value;
         while (position < n) {
             while (position < n) {
                 if ((s[position] == ' ') || (s[position] == '\n')
@@ -292,39 +294,39 @@ public:
                 }
             }
             if (s[position] == '"') {
-                if (state == "find_value") {
+                if (state == find_value) {
                     position++;
                 }
             }
             if (s[position] == ',') {
-                if (state == "find_comma_or_end") {
-                    state = "find_value";
+                if (state == find_comma_or_end) {
+                    state = find_value;
                     position++;
                 }else{
                     throw std::invalid_argument("12.12.12");
                 }
             }
             if (isdigit(s[position])) {
-                if (state == "find_value") {
+                if (state == find_value) {
                     float value = parse_number(s, position);
                     arr.push_back(value);
-                    state = "find_comma_or_end";
+                    state = find_comma_or_end;
                 } else {
                     throw std::invalid_argument("13.13.13");
                 }
             }
 
             if (isalpha(s[position])) {
-                if (state == "find_value") {
+                if (state == find_value) {
                     bool value = parse_bool(s, position);
                     arr.push_back(value);
-                    state = "find_comma_or_end";
+                    state = find_comma_or_end;
                 } else {
                     throw std::invalid_argument("15.15.15");
                 }
             }
             if (s[position] == '{') {
-                if (state == "find_value") {
+                if (state == find_value) {
                     position++;
                     arr.push_back(parse_object(s, position));
                 } else {
