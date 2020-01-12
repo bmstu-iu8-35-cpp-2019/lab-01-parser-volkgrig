@@ -24,9 +24,25 @@
 *.lai
 *.la
 *.a
-*.lib
 
 # Executables
 *.exe
 *.out
 *.app
+
+# Project files
+*.sln
+*.vcxproj
+*vcxproj.filters
+*vcxproj.user
+.vs/
+Debug/
+enc_temp_folder/
+
+# Cmake files
+_3rdParty/
+CMakeFiles/
+*.cmake
+CMakeCache.txt
+*.dir*
+

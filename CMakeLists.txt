@@ -19,33 +19,42 @@ huntergate(
 )
 
 # TODO: rename project and delete this comment
-project(template)
-string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
-string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
-string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
+project(lab)
+
+hunter_add_package(nlohmann_json)
+find_package(nlohmann_json CONFIG REQUIRED)
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
-# TODO: change template word to project name and delete this comment
-add_library(template STATIC
+# TODO: change lab word to project name and delete this comment
+add_library(lab STATIC
   # enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
+
 add_executable(tests
   # TODO: enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
 )
 
-# TODO: change template word to project name and delete this comment
-target_include_directories(template 
+add_executable(mains
+  # TODO: enum your files and delete this comment
+  ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
+)
+# TODO: change lab word to project name and delete this comment
+target_include_directories(lab 
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 target_include_directories(tests 
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-# TODO: change template word to project name and delete this comment
-target_link_libraries(tests GTest::main template)
+target_include_directories(mains 
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+# TODO: change lab word to project name and delete this comment
+target_link_libraries(tests GTest::main lab)
+target_link_libraries(mains nlohmann_json::nlohmann_json lab)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests) 
@@ -54,8 +63,8 @@ if(BUILD_COVERAGE)
   set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
   find_package(codecov)
-  # TODO: change template word to project name and delete this comment
-  add_coverage(template)
+  # TODO: change lab word to project name and delete this comment
+  add_coverage(lab)
   add_coverage(tests)
   list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
   coverage_evaluate()
